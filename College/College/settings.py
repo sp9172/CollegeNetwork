@@ -55,7 +55,7 @@ ROOT_URLCONF = 'College.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [BASE_DIR / r'D:\github\CollegeNetwork\templates',],
+        'DIRS': [BASE_DIR / r'D:\github\CollegeNetwork\College\templates',],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
