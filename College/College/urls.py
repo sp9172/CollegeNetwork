@@ -26,6 +26,8 @@ urlpatterns = [
     path('about/',views.about,name="Aboutpage"),
     path('contact/',views.contact,name="ContactPage"),
     path('singup',views.singup,name="SingUp"),
-    path('login',views.user_login,name="Login")
+    path('login',views.user_login,name="Login"),
+    path('userlogout',views.userlogout,name='UserLogout')
+    
 
 ]

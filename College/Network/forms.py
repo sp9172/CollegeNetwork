@@ -1,6 +1,7 @@
 # from pyexpat import model
 # from turtle import width
 from django import forms
+from django.utils.translation import gettext,gettext_lazy as _
 
 
 
@@ -28,6 +29,6 @@ class SingUpForm(UserCreationForm):
 
 class UserLoginForm(AuthenticationForm):
     username = UsernameField(widget=forms.TextInput(attrs={'class':'form-control'}))
-    password = forms.CharField(label=("Password"),strip=False,widget=forms.PasswordInput(attrs={'class':'form-control'}))
+    password = forms.CharField(label=_("Password"),strip=False,widget=forms.PasswordInput(attrs={'class':'form-control'}))
 
 
