@@ -1,27 +1,9 @@
 {% extends 'main.html' %}
 
 {% block body %}
-<div class="mt-2 p-2  text-dark rounded">
-    <form action="" method="post" novalidate>
-        {% csrf_token %}
-        {% for fm in form  %}
-        <div class="form-group">
-        {{fm.label_tag}} {{fm}} {{fm.errors|striptags}}
-    </div>
 
-        
-        {% endfor %}<br>
-
-        <input type="submit" value="Submit" class="btn btn-dark">
-        {% if form.non_field_errors %}
-        {% for error in form.non_field_errors  %}
-        
-        <p>{{error}}</p>
-        {% endfor %}
-        
-        {% endif %}
+   {{ form }}
 
 
-    </form>
-</div>
+
 {% endblock body %}
