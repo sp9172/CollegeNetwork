@@ -23,10 +23,12 @@ from Network import views
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('',views.Home,name="HomePage"),
+    path('login',views.user_login,name="Login"),
+    path('singup',views.singup,name="SingUp"),
     # path('about/',views.about,name="Aboutpage"),
     # path('contact/',views.contact,name="ContactPage"),
-    # path('singup',views.singup,name="SingUp"),
-    # path('login',views.user_login,name="Login"),
+    
+   
     # path('userlogout',views.userlogout,name='UserLogout')
     
 

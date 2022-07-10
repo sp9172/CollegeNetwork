@@ -9,18 +9,21 @@
            <li class="nav-item">
             <a class="nav-link active" aria-current="page" href="/">Home</a>
           </li> 
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'SingUp' %}" data-bs-toggle="modal" data-bs-target="#exampleModal">SingUp</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'Login' %}" data-bs-toggle="modal" data-bs-target="#loginModal" >SingIn</a>
+          </li>
+         
           {% comment %} <li class="nav-item">
             <a class="nav-link" href="{% url 'Aboutpage' %}">About</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="{% url 'ContactPage' %}">Contact</a>
           </li>
-          <li class="nav-item">
-            <a class="nav-link" href="{% url 'SingUp' %}">SingUp</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="{% url 'Login' %}">SingIn</a>
-          </li>
+         
+         
           <li class="nav-item">
             <a class="nav-link" href="{% url 'UserLogout' %}">LogOut</a>
           </li> {% endcomment %}
@@ -42,3 +45,86 @@
       </div>
     </div>
   </nav>
+ 
+  
+  
+  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h6 class="modal-title" id="exampleModalLabel">Registration</h6>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <form>
+            <div class="form-group">
+              <label for="fname">First Name:</label>
+              <input type="text" class="form-control" id="fname" name="fname">
+            </div>
+            <div class="form-group">
+              <label for="lname" >Last Name:</label>
+              <input type="text" class="form-control" id="lname" name="lname">
+            </div>
+            <div class="form-group">
+              <label for="mobile">Mobie No:</label>
+              <input type="text" class="form-control" id="mobile" name="mobile">
+            </div>
+            <div class="form-group">
+              <label for="email" >Email:</label>
+              <input type="text" class="form-control" id="email" name="email">
+            </div>
+            <div class="form-group">
+              <label for="username" >Username:</label>
+              <input type="text" class="form-control" id="username" name="username">
+            </div>
+            <div class="form-group">
+              <label for="pass1" >Password:</label>
+              <input type="text" class="form-control" id="pass1" name="pass1">
+            </div>
+            <div class="form-group">
+              <label for="pass2" > Confirm Paaword:</label>
+              <input type="text" class="form-control" id="pass2" name="pass2">
+            </div>
+          <button type="button" class="btn btn-primary">Submit</button>
+          </form>
+        </div>
+        <div class="modal-footer">
+          
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+
+{% comment %} login modal {% endcomment %}
+
+<div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="loginmodal" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h6 class="modal-title" id="loginmodal">Login</h6>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form>
+          
+          <div class="form-group">
+            <label for="loginusername" >Username:</label>
+            <input type="text" class="form-control" id="loginusername" name="loginusername">
+          </div>
+          <div class="form-group">
+            <label for="pass" >Password:</label>
+            <input type="text" class="form-control" id="pass" name="pass">
+          </div>
+         
+        <button type="button" class="btn btn-primary">Submit</button>
+        </form>
+      </div>
+      <div class="modal-footer">
+        
+      </div>
+    </div>
+  </div>
+</div>

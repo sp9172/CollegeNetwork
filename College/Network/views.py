@@ -1,16 +1,42 @@
-from django.http import JsonResponse
 from django.shortcuts import render
+from django.views.decorators.csrf import csrf_exempt
+from . forms import PersonForm,personloginForm
 from . models import PersonModel
-from . serializer import PersonSerializer
 
-from rest_framework import status
-from rest_framework . renderers import JSONRenderer
-from rest_framework. parsers import JSONParser  
 
+@csrf_exempt
 
 def Home(request):
-    if request.method =='GET':
-        form=PersonModel()
-        # serializers=PersonSerializer(form)
-        # json_data=JSONRenderer().render(serializers.data)
-        return render(request,'Registration.html',{'form':form})
+    return render(request,'main.html')
+
+def singup(request):
+    if request.method=='POST':
+        form=PersonForm(request.POST)
+        if form.is_valid():
+            form.save()
+        context={
+            'form':form
+        }
+        return render(request,'Registration.html',context)
+
+    else:
+        if request.method=='GET':
+            form=PersonForm()
+            context={
+            'form':form
+        }
+        return render(request,'Registration.html',context)
+    
+
+def user_login(request):
+    if request.method=='POST':
+        username=PersonModel.POST.get()
+        password=PersonModel.POST.get()
+        
+    form=personloginForm()
+
+    context={
+        'form':form
+    }
+
+    return render(request,'login.html',context)
