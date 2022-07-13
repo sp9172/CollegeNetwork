@@ -74,3 +74,7 @@ def userlogout(request):
     messages.success(request,"Logout Sccessfully")
     return redirect('/')
     
+
+
+def userprofile(request):
+    return render(request,'Registration.html')

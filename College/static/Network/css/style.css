@@ -1,0 +1,14 @@
+.contentdiv{
+    background-color:#F5F5F5;
+    
+}
+
+.avatar {
+    vertical-align: middle;
+    width: 50px;
+    height: 50px;
+    border-radius: 150%;
+    border: 1px black;
+    padding-left: 40%;
+  }
+  

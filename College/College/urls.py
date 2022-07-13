@@ -26,7 +26,8 @@ urlpatterns = [
     path('indexpage',views.Index,name="Firstpage"),
     path('login',views.user_login,name="Login"),
     path('singup',views.singup,name="SingUp"),
-    path('userlogout',views.userlogout,name='UserLogout')
+    path('userlogout',views.userlogout,name='UserLogout'),
+    path('userprofile',views.userprofile,name="UserProfile")
     
     # path('about/',views.about,name="Aboutpage"),
     # path('contact/',views.contact,name="ContactPage"),
