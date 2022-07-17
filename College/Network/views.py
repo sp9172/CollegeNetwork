@@ -91,6 +91,8 @@ def userprofile(request):
         messages.success(request,"Profile Create Successfully !")
     return render(request,'UserProfile.html')
 
+    
+
     # if request.method=='GET':
     #     form=userprofileform()
     #     return render(request,'UserProfile.html',{'form':form})
