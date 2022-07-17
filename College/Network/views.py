@@ -3,8 +3,9 @@ from django.http import HttpResponse
 from django.shortcuts import redirect, render
 from django.views.decorators.csrf import csrf_exempt
 from django.contrib.auth import authenticate,login,logout
-from . forms import PersonForm,personloginForm
-from . models import PersonModel
+from flask import request_finished
+from . forms import PersonForm,personloginForm,userprofileform
+from . models import PersonModel,UserProfile,bloodgroup
 from django.contrib.auth.models import User
 from django.contrib import messages
 
@@ -73,8 +74,30 @@ def userlogout(request):
     logout(request)
     messages.success(request,"Logout Sccessfully")
     return redirect('/')
+
+
     
 
 
 def userprofile(request):
-    return render(request,'Registration.html')
+    if request.method=='POST':
+        mno=request.POST['mobileno']
+        dbo=request.POST['dbo']
+        addres=request.POST['addres']
+        blood=int(request.POST['blood'])
+
+        userprofile=UserProfile (mobile=mno,dateofbirth=dbo, address=addres,blood_id=blood)
+        userprofile.save()
+        messages.success(request,"Profile Create Successfully !")
+    return render(request,'UserProfile.html')
+
+    # if request.method=='GET':
+    #     form=userprofileform()
+    #     return render(request,'UserProfile.html',{'form':form})
+    # elif request.method=='POST':
+    #     form=userprofileform(request.POST)
+    #     if form.is_valid():
+    #         messages.success(request,'Profile Update !')
+    #         return render(request,'UserProfile.html',{'form':form})
+        
+    

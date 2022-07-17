@@ -15,6 +15,8 @@ Including another URLconf
 """
 # from unicodedata import name
 # from unicodedata import name
+from django.conf import settings
+from django.conf.urls.static import static
 from django.contrib import admin
 from django.urls import path
 # from College.Network.views import about, contact
@@ -36,4 +38,4 @@ urlpatterns = [
     # path('userlogout',views.userlogout,name='UserLogout')
     
 
-]
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
