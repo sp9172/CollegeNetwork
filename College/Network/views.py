@@ -1,13 +1,14 @@
 from django import http
-from django.http import HttpResponse
+from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import redirect, render
 from django.views.decorators.csrf import csrf_exempt
 from django.contrib.auth import authenticate,login,logout
 from flask import request_finished
-from . forms import PersonForm,personloginForm,userprofileform
-from . models import PersonModel,UserProfile,bloodgroup
+from . forms import *
+from . models import *
 from django.contrib.auth.models import User
 from django.contrib import messages
+from django.contrib.auth.models import Group
 
 
 
@@ -16,9 +17,27 @@ from django.contrib import messages
 def Home(request):
     return render(request,'main.html')
 
+@csrf_exempt
 def Index(request):
-    return render(request,'index.html')
+    if request.user.is_authenticated:
+        if request.method=='POST':
+            form =ImageForm(request.POST,request.FILES)
+            if form.is_valid():
+                form.save()
+                return redirect('/indexpage')
+        elif request.method=='GET':
+            form=ImageUploading.objects.all()
+            return render(request,'index.html',{'form':form})
+        else:
+            form=ImageForm()
+            # return render(request,'index.html',{'form':form})
+        return render(request,'index.html',{'form':form})
+    return HttpResponseRedirect('')
 
+    
+         
+    
+@csrf_exempt
 def singup(request):
     if request.method=='POST':
         fname=request.POST['fname']
@@ -47,14 +66,16 @@ def singup(request):
         userauth = User.objects.create_user(username,email,pass1)
         userauth.first_name = fname
         userauth.last_name = lname
-        userauth.save()
+        user = userauth.save()
+        group = Group.objects.get(name='Student')
+        user.groups.add(group)
         return redirect('/')
 
     else:
         return HttpResponse('404 bad request') 
 
     
-
+@csrf_exempt
 def user_login(request):
     if request.method=='POST':
         loginusername=request.POST['loginusername']
@@ -78,7 +99,7 @@ def userlogout(request):
 
     
 
-
+@csrf_exempt
 def userprofile(request):
     if request.method=='POST':
         mno=request.POST['mobileno']
@@ -102,4 +123,19 @@ def userprofile(request):
     #         messages.success(request,'Profile Update !')
     #         return render(request,'UserProfile.html',{'form':form})
         
-    
+
+
+@csrf_exempt
+def AddPost(request):
+    if request.method=='POST':
+        userpost =PostForm(request.POST)
+        if userpost.is_valid():
+            userpost.save()
+            return redirect('/indexpage')
+    elif request.method=='GET':
+        userpost=PostUploading.objects.all()
+        return render(request,'index.html',{'form':userpost})
+    else:
+        userpost=PostForm()
+        # return render(request,'index.html',{'form':form})
+    return render(request,'index.html',{'form':userpost})

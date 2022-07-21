@@ -6,34 +6,24 @@
    
     <div class="mt-2 p-5 contentdiv"  >
         <div class="container">
-            <form method = "post" enctype="multipart/form-data">
-                {% csrf_token %}
-                {{ form.as_p }}
-                <button type="submit">Upload Image</button>
-            </form>
-
-            <form action="{% url 'AddPost' %}" method = "post" enctype="multipart/form-data">
+          <form method = "post" enctype="multipart/form-data">
                 {% csrf_token %}
                 {{ userpost.as_p }}
                 <button type="submit">Upload Post</button>
             </form>
            
 
-            {% for post in form %}
+            {% for post in userpost %}
         <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 offset-3 float-md-center"  >
+
             {{post.post}}
+           
 
                
-                 <img src="{{ post.image.url }}"  style="width: 86%;" /><hr>
+                
         </div>
 {% endfor %}
-
-
         
-
-
-           
-           
         </div>
     </div>
 

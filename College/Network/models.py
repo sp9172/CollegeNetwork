@@ -26,5 +26,13 @@ class UserProfile(models.Model):
     dateofbirth=models.CharField(max_length=10)
     address=models.CharField(max_length=150)
     blood=models.ForeignKey(bloodgroup,on_delete=models.CASCADE)
+
+class ImageUploading(models.Model):
+    post=models.CharField(max_length=200)
+    image=models.ImageField(upload_to='images/')
+
+class PostUploading(models.Model):
+    postupload=models.CharField(max_length=200)
+
     
     

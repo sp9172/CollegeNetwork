@@ -1,5 +1,5 @@
 # from rest_framework import serializers
-from .models import PersonModel,UserProfile
+from .models import *
 from django import forms
 
 class PersonForm(forms.ModelForm):
@@ -57,3 +57,21 @@ class userprofileform(forms.ModelForm):
 
 
         }
+
+
+class ImageForm(forms.ModelForm):
+    class Meta:
+        model=ImageUploading
+        fields='__all__'
+        labels={
+            # 'post':'Add Post Here',
+            # 'image':'Upload Image '
+        }
+        widgets={
+            # 'post':forms.TextInput(attrs={'class':'form-control'})
+        }
+
+class PostForm(forms.ModelForm):
+    class Meta:
+        model= PostUploading
+        fields='__all__'
