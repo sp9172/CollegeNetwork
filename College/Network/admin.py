@@ -5,7 +5,7 @@ from . models import *
 
 admin.site.register(PersonModel)
 admin.site.register(UserProfile)
-admin.site.register(bloodgroup)
+# admin.site.register(bloodgroup)
 admin.site.register(ImageUploading)
 
 admin.site.register(PostUploading)

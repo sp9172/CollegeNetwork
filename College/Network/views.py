@@ -48,13 +48,13 @@ def singup(request):
         pass1=request.POST['pass1']
         pass2=request.POST['pass2']
 
-        if len(username) > 10:
-            messages.error(request,'Username must be 10 charaters')
-            return redirect('/')
+        # if len(username) > 10:
+        #     messages.error(request,'Username must be 10 charaters')
+        #     return redirect('/')
 
-        if not username.isalnum():
-            messages.error(request,'user alphabets and numbers')
-            return redirect('/')
+        # if not username.isalnum():
+        #     messages.error(request,'user alphabets and numbers')
+        #     return redirect('/')
 
 
         if pass1 != pass2:
@@ -66,9 +66,9 @@ def singup(request):
         userauth = User.objects.create_user(username,email,pass1)
         userauth.first_name = fname
         userauth.last_name = lname
-        user = userauth.save()
-        group = Group.objects.get(name='Student')
-        user.groups.add(group)
+        userauth.save()
+        # group = Group.objects.get(name='Student')
+        # user.groups.add(group)
         return redirect('/')
 
     else:
@@ -105,9 +105,9 @@ def userprofile(request):
         mno=request.POST['mobileno']
         dbo=request.POST['dbo']
         addres=request.POST['addres']
-        blood=int(request.POST['blood'])
+        # blood=request.POST['blood']
 
-        userprofile=UserProfile (mobile=mno,dateofbirth=dbo, address=addres,blood_id=blood)
+        userprofile=UserProfile (mobile=mno,dateofbirth=dbo, address=addres)
         userprofile.save()
         messages.success(request,"Profile Create Successfully !")
     return render(request,'UserProfile.html')
